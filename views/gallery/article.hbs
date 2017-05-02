@@ -1,27 +1,32 @@
 <div class="title">
+
   <div class="ourTitle">
     <h3>Charles and Kaleo</h3>
   </div>
-  <div class="description">
-    <h1>here is our description of our homepage</h1>
-  </div>
-</div>
 
- <form method="POST" action="/gallery/{{title}}?_method=DELETE" enctype="application/x-www-form-urlencoded">
+  <div class="description">
+    <p>here is our description of our homepage</p>
+  </div>
+
+</div>
 
 <div id="listing">
   <div class="mainPhoto">
     <h1>{{author}}</h1>
     <img src="{{link}}" alt="">
-  <p>{{description}}</p>
+    <p>{{description}}</p>
   </div>
 
 {{#each gallery}}
   <div id="otherPhotos">
     <img src="{{link}}" alt="">
-    <div>{{title}}</div>
+    <p>{{author}}</p>
   </div>
   {{/each}}
 </div>
+
+<form method="POST" action="/gallery/{{id}}?_method=DELETE" enctype="application/x-www-form-urlencoded">
+
   <button type="submit"> DELETE </button>
+
 </form>

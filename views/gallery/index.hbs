@@ -1,32 +1,31 @@
-{{message}}
 <div class="title">
 {{!-- our title  --}}
-  <div class="ourtitle">
-    <h3>Charles and Kaleo</h3>
+  <div class="ourTitle">
+    <h1>Charles and Kaleo</h1>
   </div>
-
   {{!-- our description --}}
   <div class="description">
-    <h1>This is our description
-    </h1>
+    <p>This is our description</p>
   </div>
+
 </div>
 
 {{!-- the listing for the photos --}}
 <div class="photoListing">
 {{!-- for main photo--}}
   <div class="mainPhoto">
-    <img src="{{link}}" alt="">
+      <img src="{{link}}" alt="">
+  </div>
 
   {{!-- for other photos --}}
   {{#each gallery}}
   <div class="otherPhotos">
       <img src="{{link}}" alt="">
       <div>{{author}}</div>
-      <div>{{description}}</div>
-  </div>
+      <p>{{link}}</p>
   </div>
   {{/each}}
+
 </div>
 
 
