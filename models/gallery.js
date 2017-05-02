@@ -1,7 +1,7 @@
 /*jshint esversion:6*/
 
 module.exports = function(sequelize, DataTypes) {
-  var Task = sequelize.define("Gallery", {
+  var Gallery = sequelize.define("Gallery", {
     author: {
       type: DataTypes.STRING,
       allowNull: false
@@ -16,5 +16,5 @@ module.exports = function(sequelize, DataTypes) {
     }
   });
 
-  return Task;
+  return Gallery;
 };

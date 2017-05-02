@@ -1,76 +1,84 @@
 /*jshint esversion:6*/
 const express = require('express');
 const router = express.Router();
-
-// POST
-router.route('/')
-  .post((req, res) => {
-    articles.registerArticle(req)
-      .then(data => {
-        res.redirect('/articles/');
-      });
-  });
-
-// PUT
-router.route('/:title')
-  .put((req, res) => {
-    if(req.body.title === undefined){
-      articles.editArticle(req)
-        .then(data => {
-          res.redirect(303, `/articles/${req.params.title}`);
-        });
-    } else {
-      articles.editArticle(req)
-        .then(data => {
-          res.redirect(303, `/articles/${req.body.title}`);
-        });
-    }
-  });
-
-// DELETE
-router.route('/:title')
-  .delete((req, res) => {
-    articles.deleteArticle(req)
-      .then(data => {
-        res.redirect(303, '/articles/');
-      });
-  });
+const db = require('../models');
 
 // GET
 router.route('/')
   .get( (req, res) => {
-    articles.getArticles()
+    db.Gallery.findAll()
       .then(data => {
-        data.forEach((x) => {
-          x.urlTitle = encodeURI(x.title);
-        });
         let articlesData = {
           listArticles: data,
-          message: req.query.message
         };
-        res.render('articles/index', articlesData);
+        res.render('gallery/index', articlesData);
+      })
+      .catch(error => {
+        console.log(error);
       });
   });
 
 router.route('/new')
   .get( (req, res) => {
-    res.render('articles/new', req.query);
+    res.render('gallery/new');
   });
 
-router.route('/:title')
+router.route('/:id')
   .get( (req, res) => {
-    articles.getArticle(req.params.title)
+    db.Gallery.findOne({where: {id: req.params.id}})
       .then(data => {
-        res.render('articles/article',data);
+        res.render('gallery/article', data);
+      })
+      .catch(error => {
+        console.log(error);
       });
 });
 
-router.route('/:title/edit')
+router.route('/:id/edit')
   .get( (req, res) => {
-      articles.getArticle(req.params.title)
+      db.Gallery.findOne({where: {"id": req.params.id}})
         .then(data => {
-          res.render('articles/edit', data);
-        });
+          res.render('gallery/edit', data);
+        })
+        .catch(error => {
+          console.log(error);
+      });
     });
+
+// POST
+router.route('/')
+  .post((req, res) => {
+    db.Gallery.create({"author": req.body.author, "link": req.body.link, "description": req.body.description})
+      .then(data => {
+        res.redirect('/gallery/');
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  });
+
+// PUT
+router.route('/:id')
+  .put((req, res) => {
+    db.Gallery.update({"author": req.body.author, "link": req.body.link, "description": req.body.description},{where: {"id": req.params.id}})
+      .then(data => {
+        res.redirect(303, `/gallery/${req.params.id}`);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  });
+
+// DELETE
+router.route('/:id')
+  .delete((req, res) => {
+     db.Gallery.destroy({where: {"id": req.params.id}})
+      .then(data => {
+        res.redirect(303, '/gallery/');
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  });
 
 module.exports = router;

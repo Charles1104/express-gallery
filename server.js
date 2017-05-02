@@ -28,6 +28,19 @@ app.use(methodOverride('_method'));
 // Routes
 app.use('/gallery', galleryRoutes);
 
+app.get('/', (req, res) => {
+  db.Gallery.findAll()
+  .then(data => {
+    let articlesData = {
+      listArticles: data,
+    };
+    res.render('gallery/index', articlesData);
+  })
+  .catch(error => {
+    console.log(error);
+  });
+});
+
 app.get("*", (req, res) => {
   res.status(404).render('helper/404');
 });
