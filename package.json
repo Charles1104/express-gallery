@@ -20,6 +20,8 @@
   "homepage": "https://github.com/Charles1104/express-gallery#readme",
   "dependencies": {
     "express": "^4.15.2",
+    "express-handlebars": "^3.0.0",
+    "handlebars": "^4.0.7",
     "pg": "^6.1.5",
     "pg-hstore": "^2.3.2",
     "sequelize": "^3.30.4"

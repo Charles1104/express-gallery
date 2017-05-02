@@ -1,0 +1,16 @@
+{{message}}
+
+<h1> List of articles </h1>
+
+<div class="articles">
+{{#each listArticles}}
+<div class="article">
+  <h2> Title: {{title}}</h2>
+  <ol>
+    <li> Body: {{body}}</li>
+    <li> Author: {{author}}</li>
+    <li> URL: {{urlTitle}}</li>
+  </ol>
+</div>
+{{/each}}
+</div>

@@ -1,0 +1,23 @@
+<p>{{{message}}}</p>
+
+<h1> Article to edit </h1>
+
+<form method="POST" action="/articles/{{title}}?_method=PUT" enctype="application/x-www-form-urlencoded">
+
+  <ol>
+    <li> Title:        <input name="title" type="textbox" value="{{title}}"> </li>
+    <li> Body:       <input name="body" type="textbox" value="{{body}}"> </li>
+    <li> Author:   <input name="author" type="textbox" value="{{author}}"> </li>
+  </ol>
+
+  <button type="submit"> EDIT </button>
+
+</form>
+
+ <form method="POST" action="/articles/{{title}}?_method=DELETE" enctype="application/x-www-form-urlencoded">
+
+  <button type="submit"> DELETE </button>
+
+</form>
+
+
