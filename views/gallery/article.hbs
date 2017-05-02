@@ -13,16 +13,9 @@
 <div id="listing">
   <div class="mainPhoto">
     <h1>{{author}}</h1>
-    <img src="{{link}}" alt="">
+    <img src="{{link}}" alt="Hi">
     <p>{{description}}</p>
   </div>
-
-{{#each gallery}}
-  <div id="otherPhotos">
-    <img src="{{link}}" alt="">
-    <p>{{author}}</p>
-  </div>
-  {{/each}}
 </div>
 
 <form method="POST" action="/gallery/{{id}}?_method=DELETE" enctype="application/x-www-form-urlencoded">

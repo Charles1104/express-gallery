@@ -11,18 +11,18 @@
 </div>
 
 {{!-- the listing for the photos --}}
-<div class="photoListing">
+{{!-- <div class="photoListing"> --}}
 {{!-- for main photo--}}
-  <div class="mainPhoto">
-      <img src="{{link}}" alt="">
-  </div>
+  {{!-- <div class="mainPhoto"> --}}
+      {{!-- <img src="{{link}}" alt=""> --}}
+  {{!-- </div> --}}
 
   {{!-- for other photos --}}
-  {{#each gallery}}
+  {{#each instances}}
   <div class="otherPhotos">
       <img src="{{link}}" alt="">
       <div>{{author}}</div>
-      <p>{{link}}</p>
+      <p>{{description}}</p>
   </div>
   {{/each}}
 

@@ -8,10 +8,8 @@ router.route('/')
   .get( (req, res) => {
     db.Gallery.findAll()
       .then(data => {
-        let articlesData = {
-          listArticles: data,
-        };
-        res.render('gallery/index', articlesData);
+        let listPhotos = {instances: data};
+        res.render('gallery/index', listPhotos);
       })
       .catch(error => {
         console.log(error);
@@ -25,9 +23,10 @@ router.route('/new')
 
 router.route('/:id')
   .get( (req, res) => {
+    console.log(req.params.id);
     db.Gallery.findOne({where: {id: req.params.id}})
       .then(data => {
-        res.render('gallery/article', data);
+        res.render('gallery/article', data.dataValues);
       })
       .catch(error => {
         console.log(error);
@@ -38,7 +37,7 @@ router.route('/:id/edit')
   .get( (req, res) => {
       db.Gallery.findOne({where: {"id": req.params.id}})
         .then(data => {
-          res.render('gallery/edit', data);
+          res.render('gallery/edit', data.dataValues);
         })
         .catch(error => {
           console.log(error);
