@@ -1,8 +1,11 @@
-var express = require('express');
-var app = express();
+/*jshint esversion: 6 */
 
-var db = require('./models');
+const express = require('express');
+const app = express();
 
-app.listen(3000, function() {
+const db = require('./models');
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => {
   db.sequelize.sync();
 });
