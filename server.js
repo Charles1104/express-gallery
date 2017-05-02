@@ -19,6 +19,8 @@ const hbs = handlebars.create({
 app.engine('hbs', hbs.engine);
 app.set('view engine', 'hbs');
 
+app.use('/static', express.static('public'));
+
 //Bodyparser
 app.use(bodyParser.urlencoded({ extended: true }));
 
