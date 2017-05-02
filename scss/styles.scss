@@ -1,5 +1,10 @@
-$dark-color : #333333;
+.title {
+  display: flex;
+  flex-flow: row;
+  justify-content: flex-start;
+}
 
-body {
-  background: $dark-color;
+.ourTitle {
+  margin-top: 40px;
+  background: green;
 }
