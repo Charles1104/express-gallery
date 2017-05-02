@@ -1,17 +1,27 @@
-<h1> Article </h1>
+<div class="title">
+  <div class="ourTitle">
+    <h3>Charles and Kaleo</h3>
+  </div>
+  <div class="description">
+    <h1>here is our description of our homepage</h1>
+  </div>
+</div>
 
+ <form method="POST" action="/gallery/{{title}}?_method=DELETE" enctype="application/x-www-form-urlencoded">
 
-<h2> Title: {{title}}</h2>
+<div id="listing">
+  <div class="mainPhoto">
+    <h1>{{author}}</h1>
+    <img src="{{link}}" alt="">
+  <p>{{description}}</p>
+  </div>
 
- <form method="POST" action="/articles/{{title}}?_method=DELETE" enctype="application/x-www-form-urlencoded">
-
-  <ol>
-    <li> Body: {{body}}</li>
-    <li> Author: {{author}}</li>
-    <li> URL: {{urlTitle}}</li>
-  </ol>
-
+{{#each gallery}}
+  <div id="otherPhotos">
+    <img src="{{link}}" alt="">
+    <div>{{title}}</div>
+  </div>
+  {{/each}}
+</div>
   <button type="submit"> DELETE </button>
-
-
 </form>

@@ -1,12 +1,12 @@
 <p>{{{message}}}</p>
 
-<h1> Article to edit </h1>
+<h1> Edit the photo in the gallery </h1>
 
-<form method="POST" action="/articles/{{title}}?_method=PUT" enctype="application/x-www-form-urlencoded">
+<form method="POST" action="/gallery/{{title}}?_method=PUT" enctype="application/x-www-form-urlencoded">
 
   <ol>
-    <li> Title:        <input name="title" type="textbox" value="{{title}}"> </li>
-    <li> Body:       <input name="body" type="textbox" value="{{body}}"> </li>
+    <li> Title:        <input name="img" type="textbox" value="{{img}}"> </li>
+    <li> description:       <input name="description" type="textbox" value="{{description}}"> </li>
     <li> Author:   <input name="author" type="textbox" value="{{author}}"> </li>
   </ol>
 
@@ -14,7 +14,7 @@
 
 </form>
 
- <form method="POST" action="/articles/{{title}}?_method=DELETE" enctype="application/x-www-form-urlencoded">
+ <form method="POST" action="/gallery/{{title}}?_method=DELETE" enctype="application/x-www-form-urlencoded">
 
   <button type="submit"> DELETE </button>
 
