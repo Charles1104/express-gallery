@@ -1,0 +1,17 @@
+<h1> Article </h1>
+
+
+<h2> Title: {{title}}</h2>
+
+ <form method="POST" action="/articles/{{title}}?_method=DELETE" enctype="application/x-www-form-urlencoded">
+
+  <ol>
+    <li> Body: {{body}}</li>
+    <li> Author: {{author}}</li>
+    <li> URL: {{urlTitle}}</li>
+  </ol>
+
+  <button type="submit"> DELETE </button>
+
+
+</form>
