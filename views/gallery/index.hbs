@@ -1,31 +1,29 @@
+<div class="topBorder"></div>
+
 <div class="header">
-{{!-- our title  --}}
+
   <div class="headerTitle">
-    <h1>_CHAKAL_</h1>
+    <h1>_CHARLES AND KALEO_ {{message}} </h1>
   </div>
-  {{!-- our description --}}
+
   <div class="headerDescription">
-    <p>This is our description</p>
+    <p>Welcome to our online portfolio. The following pictures represent activities and places we are interested in.</p>
+  </div>
+
+  <div class="headerPicture">
+    <img src="https://static.pexels.com/photos/115045/pexels-photo-115045.jpeg" alt="">
   </div>
 
 </div>
 
-{{!-- the listing for the photos --}}
-{{!-- <div class="photoListing"> --}}
-{{!-- for main photo--}}
-  {{!-- <div class="mainPhoto"> --}}
-      {{!-- <img src="{{link}}" alt=""> --}}
-  {{!-- </div> --}}
-
-  {{!-- for other photos --}}
-  {{#each instances}}
-  <div class="otherPhotos">
-      <img src="{{link}}" alt="">
-      <div>{{author}}</div>
-      <p>{{description}}</p>
+<div class="mainDisplay">
+    {{#each instances}}
+  <div class="photos">
+    <a href="http://localhost:3000/gallery/{{id}}">  <img src="{{link}}" alt=""> </a>
+    <p>{{author}} -- </p>
+    <p>{{description}}</p>
   </div>
-  {{/each}}
-
+    {{/each}}
 </div>
 
 

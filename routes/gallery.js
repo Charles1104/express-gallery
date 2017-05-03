@@ -2,11 +2,14 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../models');
+const flash = require('connect-flash');
+
+router.use(flash());
 
 // GET
 router.route('/')
-  .get( (req, res) => {
-    db.Gallery.findAll()
+  .get((req, res) => {
+    db.Gallery.findAll({order:'id'})
       .then(data => {
         let listPhotos = {instances: data};
         res.render('gallery/index', listPhotos);
@@ -23,13 +26,23 @@ router.route('/new')
 
 router.route('/:id')
   .get( (req, res) => {
-    console.log(req.params.id);
+    let renderVars = {};
     db.Gallery.findOne({where: {id: req.params.id}})
       .then(data => {
-        res.render('gallery/article', data.dataValues);
+        renderVars.featured = data.dataValues;
+      })
+      .then(data => {
+        return db.Gallery.findAll({where:{$not:[{id: [req.params.id]}]}})
+          .then(data => {
+            renderVars.allPhotos = data;
+          });
+      })
+      .then(data => {
+        console.log(renderVars);
+        res.render('gallery/article', renderVars);
       })
       .catch(error => {
-        console.log(error);
+        res.redirect('/gallery/');
       });
 });
 
@@ -40,7 +53,7 @@ router.route('/:id/edit')
           res.render('gallery/edit', data.dataValues);
         })
         .catch(error => {
-          console.log(error);
+          res.redirect('/gallery/');
       });
     });
 
@@ -64,7 +77,7 @@ router.route('/:id')
         res.redirect(303, `/gallery/${req.params.id}`);
       })
       .catch(error => {
-        console.log(error);
+        res.redirect('/gallery/');
       });
   });
 
@@ -76,7 +89,7 @@ router.route('/:id')
         res.redirect(303, '/gallery/');
       })
       .catch(error => {
-        console.log(error);
+        res.redirect('/gallery/');
       });
   });
 
