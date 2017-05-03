@@ -6,6 +6,16 @@ const bodyParser = require('body-parser');
 const app = express();
 const galleryRoutes = require('./routes/gallery.js');
 const methodOverride = require('method-override');
+const cookieParser = require('cookie-parser');
+const session = require('express-session');
+
+app.use(cookieParser());
+app.use(session({
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: true,
+  cookie: {secure:true}
+}));
 
 const db = require('./models');
 const PORT = process.env.PORT || 3000;

@@ -1,21 +1,25 @@
-<h1> Edit the photo in the gallery </h1>
+<div class="newMain">
 
-<form method="POST" action="/gallery/{{id}}?_method=PUT" enctype="application/x-www-form-urlencoded">
+  <h1 class="newTitle"> Edit the photo in the gallery </h1>
 
-  <ol>
-    <li> Author:        <input name="author" type="textbox" value="{{author}}"> </li>
-    <li> Link:          <input name="link" type="textbox" value="{{link}}"> </li>
-    <li> Description:   <input name="description" type="textbox" value="{{description}}"> </li>
-  </ol>
+  <form class="newForm" method="POST" action="/gallery/{{id}}?_method=PUT" enctype="application/x-www-form-urlencoded">
 
-  <button type="submit"> EDIT </button>
+    <ol>
+      <li> Author:        <input name="author" type="textbox" value="{{author}}"> </li>
+      <li> Link:          <input name="link" type="textbox" value="{{link}}"> </li>
+      <li> Description:   <input name="description" type="textbox" value="{{description}}"> </li>
+    </ol>
 
-</form>
+    <button class="button" type="submit"> EDIT </button>
 
- <form method="POST" action="/gallery/{{id}}?_method=DELETE" enctype="application/x-www-form-urlencoded">
+  </form>
 
-  <button type="submit"> DELETE </button>
+  <form method="POST" action="/gallery/{{id}}?_method=DELETE" enctype="application/x-www-form-urlencoded">
 
-</form>
+    <button class="button2" type="submit"> DELETE </button>
+
+  </form>
+
+</div>
 
 

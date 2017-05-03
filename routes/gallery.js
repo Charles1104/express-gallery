@@ -2,11 +2,14 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../models');
+const flash = require('connect-flash');
+
+router.use(flash());
 
 // GET
 router.route('/')
-  .get( (req, res) => {
-    db.Gallery.findAll()
+  .get((req, res) => {
+    db.Gallery.findAll({order:'id'})
       .then(data => {
         let listPhotos = {instances: data};
         res.render('gallery/index', listPhotos);
@@ -38,10 +41,9 @@ router.route('/:id')
       .then(data => {
         console.log(renderVars);
         res.render('gallery/article', renderVars);
-
       })
       .catch(error => {
-        console.log(error);
+        res.redirect('/gallery/');
       });
 });
 
@@ -52,7 +54,7 @@ router.route('/:id/edit')
           res.render('gallery/edit', data.dataValues);
         })
         .catch(error => {
-          console.log(error);
+          res.redirect('/gallery/');
       });
     });
 
@@ -76,7 +78,7 @@ router.route('/:id')
         res.redirect(303, `/gallery/${req.params.id}`);
       })
       .catch(error => {
-        console.log(error);
+        res.redirect('/gallery/');
       });
   });
 
@@ -88,7 +90,7 @@ router.route('/:id')
         res.redirect(303, '/gallery/');
       })
       .catch(error => {
-        console.log(error);
+        res.redirect('/gallery/');
       });
   });
 
