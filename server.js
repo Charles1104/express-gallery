@@ -19,6 +19,7 @@ const hbs = handlebars.create({
 app.engine('hbs', hbs.engine);
 app.set('view engine', 'hbs');
 
+//static file for scss
 app.use('/static', express.static('public'));
 
 //Bodyparser

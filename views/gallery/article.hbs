@@ -1,25 +1,38 @@
+<div class="topBorder"> </div>
+
 <div class="header">
 
   <div class="headerTitle">
-    <h3>Charles and Kaleo</h3>
+    <h1>_CHARLES AND KALEO_</h1>
   </div>
 
   <div class="headerDescription">
-    <p>here is our description of our homepage</p>
+    <p>Welcome to our online portfolio. The following pictures represent activities and places we are interested in.</p>
   </div>
-
 </div>
 
-<div id="listing">
+<div class="mainDisplayArticle">
+
   <div class="mainPhoto">
-    <h1>{{author}}</h1>
-    <img src="{{link}}" alt="Hi">
-    <p>{{description}}</p>
+    <p class="firstP">{{featured.author}}</p>
+    <img src="{{featured.link}}" alt="Hi">
+    <p class="secondP">{{featured.description}}</p>
+
+    <form method="POST" action="/gallery/{{featured.id}}?_method=DELETE" enctype="application/x-www-form-urlencoded">
+      <button class="button2" type="submit"> DELETE </button>
+    </form>
+
+    <button class="button" onclick="location.href='http://localhost:3000/gallery/{{featured.id}}/edit'" type="button"> EDIT </button>
+
   </div>
+
+  <div class="rightDisplay">
+      {{#each allPhotos}}
+    <div class="photos">
+      <a href="http://localhost:3000/gallery/{{id}}">  <img src="{{link}}" alt=""> </a>
+      <p>{{author}} --- {{description}} </p>
+    </div>
+      {{/each}}
+  </div>
+
 </div>
-
-<form method="POST" action="/gallery/{{id}}?_method=DELETE" enctype="application/x-www-form-urlencoded">
-
-  <button type="submit"> DELETE </button>
-
-</form>

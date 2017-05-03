@@ -1,4 +1,4 @@
-/*jshint esversion:6*/
+ /*jshint esversion:6*/
 const express = require('express');
 const router = express.Router();
 const db = require('../models');
@@ -23,10 +23,22 @@ router.route('/new')
 
 router.route('/:id')
   .get( (req, res) => {
-    console.log(req.params.id);
+
+    let renderVars = {};
     db.Gallery.findOne({where: {id: req.params.id}})
       .then(data => {
-        res.render('gallery/article', data.dataValues);
+        renderVars.featured = data.dataValues;
+      })
+      .then(data => {
+        return db.Gallery.findAll({where:{$not:[{id: [req.params.id]}]}})
+          .then(data => {
+            renderVars.allPhotos = data;
+          });
+      })
+      .then(data => {
+        console.log(renderVars);
+        res.render('gallery/article', renderVars);
+
       })
       .catch(error => {
         console.log(error);
