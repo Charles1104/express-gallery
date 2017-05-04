@@ -3,6 +3,7 @@ const express = require('express');
 const router = express.Router();
 const db = require('../models');
 const flash = require('connect-flash');
+const isAuthenticated = require('../helper/helper.js');
 
 router.use(flash());
 
@@ -12,6 +13,9 @@ router.route('/')
     db.Gallery.findAll({order:'id'})
       .then(data => {
         let listPhotos = {instances: data};
+        if(req.user !== undefined){
+          listPhotos.user= req.user;
+        }
         res.render('gallery/index', listPhotos);
       })
       .catch(error => {
@@ -59,9 +63,10 @@ router.route('/:id/edit')
 
 // POST
 router.route('/')
-  .post((req, res) => {
+  .post(isAuthenticated,(req, res) => {
     db.Gallery.create({"author": req.body.author, "link": req.body.link, "description": req.body.description})
       .then(data => {
+        console.log(isAuthenticated);
         res.redirect('/gallery/');
       })
       .catch(error => {
@@ -71,7 +76,7 @@ router.route('/')
 
 // PUT
 router.route('/:id')
-  .put((req, res) => {
+  .put(isAuthenticated, (req, res) => {
     db.Gallery.update({"author": req.body.author, "link": req.body.link, "description": req.body.description},{where: {"id": req.params.id}})
       .then(data => {
         res.redirect(303, `/gallery/${req.params.id}`);
@@ -83,7 +88,7 @@ router.route('/:id')
 
 // DELETE
 router.route('/:id')
-  .delete((req, res) => {
+  .delete(isAuthenticated, (req, res) => {
      db.Gallery.destroy({where: {"id": req.params.id}})
       .then(data => {
         res.redirect(303, '/gallery/');
