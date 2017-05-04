@@ -1,5 +1,4 @@
 /*jshint esversion:6*/
-
 module.exports = function(sequelize, DataTypes) {
   var Gallery = sequelize.define("Gallery", {
     author: {
