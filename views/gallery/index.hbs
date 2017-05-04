@@ -1,3 +1,27 @@
+<div class="headerButtons">
+
+  <div class="loginDetail">
+    {{#if user}}
+      <p id="loginDetail"> --You are now connected as <span>{{user.username}}</span>-- </p>
+    {{else }}
+      <p id="loginDetail"> --You are not logged in-- </p>
+    {{/if}}
+  </div>
+
+  <form class="newFormLogin" method="GET" action="/login" enctype="application/x-www-form-urlencoded">
+    <button class="button3" type="submit">SIGN IN</button>
+  </form>
+
+  <form class="newFormLogin" method="GET" action="/user/new" enctype="application/x-www-form-urlencoded">
+    <button class="button3" type="submit">SIGN UP</button>
+  </form>
+
+  <form class="newFormLogout" method="GET" action="/logout" enctype="application/x-www-form-urlencoded">
+    <button class="button3" type="submit">Log Out</button>
+  </form>
+
+</div>
+
 <div class="topBorder"></div>
 
 <div class="header">
@@ -23,11 +47,5 @@
     <p>{{author}} -- </p>
     <p>{{description}}</p>
   </div>
-<<<<<<< HEAD
-  {{/each}}
-=======
     {{/each}}
 </div>
->>>>>>> Charles1104_master
-
-
