@@ -1,3 +1,27 @@
+
+<div class="gagan">
+
+  <div class="flash">
+    {{#if flash}}
+      <p> {{flash}} </p>
+    {{/if}}
+
+    {{#unless flash}}
+      {{#if user}}
+        <p> <span> Picture ID {{featured.id}} selected and you are the owner of it <span> </p>
+      {{else }}
+        <p> <span> Picture ID {{featured.id}} selected and you are not the owner of it <span> </p>
+      {{/if}}
+    {{/unless}}
+
+  </div>
+
+  <div class="homepage">
+    <a href="http://localhost:3000/gallery/">  <img src="/static/image/homepage.jpg" alt=""> </a>
+  </div>
+
+</div>
+
 <div class="topBorder"> </div>
 
 <div class="header">
@@ -18,11 +42,12 @@
     <img src="{{featured.link}}" alt="Hi">
     <p class="secondP">{{featured.description}}</p>
 
-    <form method="POST" action="/gallery/{{featured.id}}?_method=DELETE" enctype="application/x-www-form-urlencoded">
-      <button class="button2" type="submit"> DELETE </button>
+    <form class="formArticle" method="POST" action="/gallery/{{featured.id}}?_method=DELETE" enctype="application/x-www-form-urlencoded">
+      {{#if user}}
+      <button class="buttonArticle" type="submit"> DELETE </button>
+      <button class="buttonArticle" onclick="location.href='http://localhost:3000/gallery/{{featured.id}}/edit'" type="button"> EDIT </button>
+      {{/if}}
     </form>
-
-    <button class="button" onclick="location.href='http://localhost:3000/gallery/{{featured.id}}/edit'" type="button"> EDIT </button>
 
   </div>
 

@@ -88,6 +88,43 @@ body {
   }
 }
 
+.gagan{
+  display:flex;
+  justify-content: flex-end;
+  align-items: center;
+  width:80%;
+  margin-left: 10%;
+}
+.flash{
+  width: 59.5%;
+  border-right: solid #767574 2px;
+  p {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    color: #D75B18;
+    text-align: center;
+    margin-top: 0px;
+    margin-bottom: 0px;
+
+    span {
+      color: green;
+    }
+  }
+}
+
+.homepage{
+  display: flex;
+  justify-content: flex-end;
+  width:32%;
+  margin-right:7%;
+  a {
+    img{
+      height:50px;
+    }
+  }
+}
+
 .mainDisplayArticle {
   display: flex;
   flex-direction: row;
@@ -111,6 +148,7 @@ body {
       font-weight: 600;
       font-size: 13px;
       color: #808080;
+      margin-top: 5px;
     }
 
     img {
@@ -145,8 +183,8 @@ body {
 }
 
 .newMain{
-  padding-left: 10%;
-  width:50%;
+  width:80%;
+  margin-left: 10%;
 
   .newTitle{
     text-align: center;
@@ -159,8 +197,12 @@ body {
   }
 }
 
-.button{
-  margin-left: 40%;
+.formArticle{
+  display:flex;
+  justify-content: space-around;
+}
+
+.buttonArticle{
   background-color: #6F6E6B;
   border: none;
   color: white;
@@ -169,6 +211,7 @@ body {
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
+  width: 150px;
 }
 
 .button2{
@@ -185,11 +228,31 @@ body {
   font-size: 16px;
 }
 
+.buttonIndex{
+  margin-right: 15px;
+  background-color: #6F6E6B;
+  border: none;
+  color: white;
+  padding: 8px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+}
+
 .headerButtons{
   width:80%;
   padding-left:10%;
   display:flex;
   justify-content: space-between;
+  align-items: center;
+
+  a{
+    width:10%;
+   img{
+    width: 100%;
+    }
+  }
 }
 
 .loginDetail{
@@ -203,9 +266,10 @@ body {
   color: #808080;
   margin-left: 3%;
   border: solid #767574 2px;
-  padding: 2px;
+  padding: 3px;
   width: 90%;
   text-align: center;
+
   span{
     color: black;
   }
@@ -300,6 +364,3 @@ body {
 
   }
 }
-
-
-

@@ -9,6 +9,7 @@ const loginRoutes = require('./routes/login.js');
 const userRoutes = require('./routes/user.js');
 const methodOverride = require('method-override');
 const cookieParser = require('cookie-parser');
+const flash = require('connect-flash');
 
 //passport
 const passport = require('passport');
@@ -37,6 +38,8 @@ app.use(session({
   resave: false,
   saveUninitialized: true
 }));
+
+app.use(flash());
 
 // setup passport
 app.use(passport.initialize());
