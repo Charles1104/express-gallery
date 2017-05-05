@@ -1,4 +1,4 @@
-/*jshint esversion:6*/
+ /*jshint esversion:6*/
 const express = require('express');
 const router = express.Router();
 const db = require('../models');
@@ -27,6 +27,7 @@ router.route('/new')
 
 router.route('/:id')
   .get( (req, res) => {
+
     let renderVars = {};
     db.Gallery.findOne({where: {id: req.params.id}})
       .then(data => {

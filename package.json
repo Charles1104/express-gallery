@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/Charles1104/express-gallery#readme",
   "dependencies": {
+    "bcrypt": "^1.0.2",
     "express": "^4.15.2",
     "express-handlebars": "^3.0.0",
     "handlebars": "^4.0.7",

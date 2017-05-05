@@ -29,7 +29,7 @@ body {
     padding-left: 3%;
     width: 35%; }
     .header .headerDescription p {
-      font-size: 13px;
+      font-size: 17px;
       font-weight: 400;
       margin: 0;
       padding-right: 10px;
@@ -50,7 +50,7 @@ body {
   justify-content: space-between; }
   .mainDisplay .photos {
     width: calc(33% - 1rem);
-    margin-top: 5px;
+    margin-top: 15px;
     padding-top: 5px;
     border-top: solid #C3C2C0 2.5px; }
     .mainDisplay .photos img {
@@ -60,7 +60,7 @@ body {
     .mainDisplay .photos p {
       font-family: 'Oswald', sans-serif;
       font-weight: 600;
-      font-size: 12px;
+      font-size: 16px;
       color: #808080;
       padding: 0;
       margin: 0; }
@@ -123,12 +123,11 @@ body {
     display: flex;
     align-content: center;
     flex-direction: column;
-    justify-content: space-between;
     padding-top: 45px; }
     .mainDisplayArticle .rightDisplay p {
       font-family: 'Oswald', sans-serif;
       font-weight: 600;
-      font-size: 13px;
+      font-size: 16px;
       color: #808080;
       margin-top: 0;
       padding-bottom: 5px; }
@@ -188,7 +187,7 @@ body {
 
 .headerButtons {
   width: 80%;
-  margin-left: 10%;
+  padding-left: 10%;
   display: flex;
   justify-content: space-between;
   align-items: center; }
@@ -212,3 +211,63 @@ body {
   text-align: center; }
   #loginDetail span {
     color: black; }
+
+.button3 {
+  margin-top: 15px;
+  margin-bottom: 17px;
+  margin-right: 15px;
+  background-color: #6F6E6B;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px; }
+
+@media screen and (max-width: 479px) {
+  /* start of phone styles */
+  .headerButtons {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    padding-left: 0px;
+    width: 100%; }
+  .button3 {
+    height: 50%;
+    width: 60px;
+    margin-top: 15px;
+    margin-bottom: 0px;
+    margin-right: 0px;
+    border: none;
+    padding: 0px;
+    font-size: 12px; }
+  .topBorder {
+    border-top: none; }
+  .header {
+    display: flex;
+    justify-content: center;
+    position: relative; }
+    .header .headerTitle {
+      border-right: none;
+      padding-left: 1.1%; }
+    .header .headerDescription {
+      text-indent: 100%;
+      white-space: nowrap;
+      overflow: hidden; }
+  .mainDisplayArticle {
+    display: flex;
+    justify-content: center;
+    width: 100%; }
+    .mainDisplayArticle .mainPhoto {
+      width: 100%; }
+  .rightDisplay {
+    text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden; }
+  .mainDisplay {
+    display: flex;
+    flex-direction: column;
+    align-items: center; }
+    .mainDisplay .photos {
+      width: 90%; } }
