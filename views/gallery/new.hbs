@@ -1,17 +1,28 @@
+<div class="topBorder"></div>
+
+<div class="header">
+
+  <div class="headerTitle">
+    <h1>_CHARLES AND KALEO_ {{message}} </h1>
+  </div>
+
+  <div class="headerDescription">
+    <p>Welcome to our online portfolio. The following pictures represent activities and places we are interested in.</p>
+  </div>
+
+</div>
+
 <div class="newMain">
 
-  <h1 class="newTitle"> New photo for the Gallery </h1>
+  <p class="newTitle">Hi {{username}}, please post a new picture</p>
 
   <form class="newForm" method="POST" action="/gallery" enctype="application/x-www-form-urlencoded">
-
     <ol>
       <li> Author:        <input name="author" type="text"> </li>
       <li> Link:          <input name="link" type="text"> </li>
       <li> Description:   <input name="description" type="text"> </li>
     </ol>
-
-    <button class="button" type="submit"> CREATE NEW </button>
-
+    <button class="button" type="submit">POST</button>
   </form>
 
 </div>

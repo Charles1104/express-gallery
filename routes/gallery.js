@@ -2,10 +2,7 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../models');
-const flash = require('connect-flash');
 const isAuthenticated = require('../helper/helper.js');
-
-router.use(flash());
 
 // GET
 router.route('/')
@@ -25,7 +22,7 @@ router.route('/')
 
 router.route('/new')
   .get( (req, res) => {
-    res.render('gallery/new');
+    res.render('gallery/new',{username:req.user.username});
   });
 
 router.route('/:id')
@@ -42,7 +39,11 @@ router.route('/:id')
           });
       })
       .then(data => {
-        console.log(renderVars);
+        let flash = req.flash('info');
+        if(flash !== undefined && flash[0] !== undefined){
+          renderVars.flash = flash[0];
+        }
+        renderVars.user = (req.user.id === renderVars.featured.UserId);
         res.render('gallery/article', renderVars);
       })
       .catch(error => {
@@ -64,7 +65,7 @@ router.route('/:id/edit')
 // POST
 router.route('/')
   .post(isAuthenticated,(req, res) => {
-    db.Gallery.create({"author": req.body.author, "link": req.body.link, "description": req.body.description})
+    db.Gallery.create({"author": req.body.author, "link": req.body.link, "description": req.body.description, "UserId": req.user.id})
       .then(data => {
         console.log(isAuthenticated);
         res.redirect('/gallery/');
@@ -77,24 +78,41 @@ router.route('/')
 // PUT
 router.route('/:id')
   .put(isAuthenticated, (req, res) => {
-    db.Gallery.update({"author": req.body.author, "link": req.body.link, "description": req.body.description},{where: {"id": req.params.id}})
+    db.Gallery.findOne({where: {"id": req.params.id}})
       .then(data => {
-        res.redirect(303, `/gallery/${req.params.id}`);
-      })
-      .catch(error => {
-        res.redirect('/gallery/');
+        if(data.dataValues.UserId === req.user.id){
+          db.Gallery.update({"author": req.body.author, "link": req.body.link, "description": req.body.description},{where: {"id": req.params.id}})
+          .then(data => {
+            res.redirect(303, `/gallery/${req.params.id}`);
+          })
+          .catch(error => {
+            res.redirect('/gallery/');
+          });
+        } else{
+          req.flash('info', 'You can only edit pictures of your gallery');
+          res.redirect(303,`/gallery/${req.params.id}`);
+        }
       });
   });
 
 // DELETE
 router.route('/:id')
   .delete(isAuthenticated, (req, res) => {
-     db.Gallery.destroy({where: {"id": req.params.id}})
+     db.Gallery.findOne({where: {"id": req.params.id}})
       .then(data => {
-        res.redirect(303, '/gallery/');
-      })
-      .catch(error => {
-        res.redirect('/gallery/');
+        if(data.dataValues.UserId === req.user.id){
+          db.Gallery.destroy({where: {"id": req.params.id}})
+          .then(data => {
+            res.redirect(303, '/gallery/');
+          })
+          .catch(error => {
+            console.log(error);
+            res.redirect(303, '/gallery/');
+          });
+        } else{
+          req.flash('info', 'You can only delete pictures of your gallery');
+          res.redirect(303,`/gallery/${req.params.id}`);
+        }
       });
   });
 

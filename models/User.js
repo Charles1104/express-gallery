@@ -7,6 +7,9 @@ module.exports = function(sequelize, DataTypes) {
     password: DataTypes.STRING
   }, {
     classMethods: {
+      associate: function(models) {
+        User.hasMany(models.Gallery);
+      }
     }
   });
 

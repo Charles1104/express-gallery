@@ -8,17 +8,21 @@
     {{/if}}
   </div>
 
-  <form class="newFormLogin" method="GET" action="/login" enctype="application/x-www-form-urlencoded">
-    <button class="button3" type="submit">SIGN IN</button>
+  <form class="formButton" method="GET" action="/login" enctype="application/x-www-form-urlencoded">
+    <button class="buttonIndex" type="submit">SIGN IN</button>
   </form>
 
-  <form class="newFormLogin" method="GET" action="/user/new" enctype="application/x-www-form-urlencoded">
-    <button class="button3" type="submit">SIGN UP</button>
+  <form class="formButton" method="GET" action="/user/new" enctype="application/x-www-form-urlencoded">
+    <button class="buttonIndex" type="submit">SIGN UP</button>
   </form>
 
-  <form class="newFormLogout" method="GET" action="/logout" enctype="application/x-www-form-urlencoded">
-    <button class="button3" type="submit">Log Out</button>
+  <form class="formButton" method="GET" action="/logout" enctype="application/x-www-form-urlencoded">
+    <button class="buttonIndex" type="submit">Log Out</button>
   </form>
+
+  {{#if user}}
+  <a href="http://localhost:3000/gallery/new">  <img src="/static/image/plus.png" alt=""> </a>
+  {{/if}}
 
 </div>
 
